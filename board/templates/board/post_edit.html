@@ -1,8 +1,17 @@
 {% extends 'board/base_board.html' %}
-{% block content %}
-<h2>New post</h2>
+{% block board_content %}
+<h2>글쓰기/편집</h2>
 <form method="POST" class="post-form">{% csrf_token %}
-{{ form.as_p }}
-<button type="submit">저장</button>
+        <div class="alert alert-info">
+                <div class="form-group">{{ form.username.label_tag }}{{ form.title }}</div>
+                <div class="form-group">{{ form.username.label_tag }}{{ form.text }}</div>
+                <button type="submit" class="btn btn-default">저장</button>
+        </div>
 </form>
+<script>
+        (function () {
+            var elem = document.querySelector("input[name='title']").classList.add('form-control');
+            var title = document.querySelector("textarea[name='text']").classList.add('form-control');
+        })();
+    </script>
 {% endblock %}
